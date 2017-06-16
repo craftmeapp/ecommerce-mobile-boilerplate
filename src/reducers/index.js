@@ -1,6 +1,10 @@
 /* @flow */
 
-import identity from './identity';
+const initialState = {};
+
+function identity(state = initialState, action = {}) {
+  return state;
+}
 
 
 export {
