@@ -19,6 +19,7 @@
     "preset": "jest-expo"
   },
   "dependencies": {
+    "apisauce": "0.13.0",
     "expo": "17.0.0",
     "ramda": "0.24.1",
     "react": "16.0.0-alpha.6",
