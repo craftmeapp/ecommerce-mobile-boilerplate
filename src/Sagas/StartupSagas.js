@@ -6,6 +6,8 @@ import SettingsActions from '../Actions/SettingsActions'
 
 
 export function* startup(settingsService, action) {
-  const res = yield call(settingsService.checkForUpdate)
-  console.log(res.data)
+  yield call(settingsService.refresh)
+  const needsToBeUpdated = yield call(settingsService.needsToBeUpdated)
+
+  console.error(needsToBeUpdated)
 }

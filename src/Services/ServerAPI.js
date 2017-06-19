@@ -12,9 +12,17 @@ export default (projectID) => {
     request.params['login'] = projectID
   })
 
-  const getSettings = () => api.get('get_settings.php')
+  const getSettingsInfo = () => api.get('get_settings.php')
+  .then(res => {
+    const data = res.data[0]
+    return {
+      version: data['version'],
+      updatedAt: data['last_sign_in_at'],
+      smartAssistantEnabled: data['smart_assistant']
+    }
+  })
 
   return {
-    getSettings,
+    getSettingsInfo,
   }
 }
