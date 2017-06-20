@@ -1,26 +1,20 @@
 /* @flow */
 
-export default ({serverAPI, settingsStorage}) => {
-  const infoStorage = settingsStorage.substorage('Info')
+export default ({storage, serverAPI}) => {
+  const infoStorage = storage.substorage('Info')
 
-  const refresh = async () => {
+  const update = async () => {
     const info = await serverAPI.getSettingsInfo()
-
-    const currentDate = info.updatedAt
-    const storedDate = await infoStorage.get('updatedAt')
-    const isUpdated = currentDate === storedDate
-
-    await settingsStorage.set('isUpdated', isUpdated)
     await infoStorage.setFromObject(info)
   }
 
-  const needsToBeUpdated = async () => 'true' !== await settingsStorage.get('isUpdated')
-  const markAsUpdated = () => settingsStorage.set('isUpdated', true)
+  const getUpdatedAt = async () => {
+    return await infoStorage.get('updatedAt')
+  }
 
   return {
-    refresh,
+    update,
     
-    needsToBeUpdated,
-    markAsUpdated,
+    getUpdatedAt,
   }
 }
