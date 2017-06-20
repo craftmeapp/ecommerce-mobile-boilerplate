@@ -6,6 +6,6 @@ import SettingsActions from '../Actions/SettingsActions'
 
 
 export function* startup(settingsService, catalogService, action) {
-  yield call(settingsService.update)
-  yield call(catalogService.update)
+  yield call([settingsService, settingsService.update])
+  yield call([catalogService, catalogService.update])
 }

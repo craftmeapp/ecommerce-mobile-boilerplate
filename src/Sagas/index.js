@@ -8,16 +8,16 @@ import Storage from '../Utilities/Storage'
 import { startup } from './StartupSagas'
 
 
-const globalStorage = new Storage()
-const serverAPI = ServerAPI('dmalakhov')
+const globalStorage = Storage.create()
+const serverAPI = ServerAPI.create('dmalakhov')
 
 const settingsStorage = globalStorage.substorage('Settings')
-const settingsService = SettingsService({storage: settingsStorage, 
+const settingsService = SettingsService.create({storage: settingsStorage,
     serverAPI})
 
 const catalogStorage = globalStorage.substorage('Catalog')
-const catalogService = new CatalogService(catalogStorage, 
-    serverAPI, settingsService)
+const catalogService = CatalogService.create({storage: catalogStorage,
+    serverAPI, settingsService})
 
 
 export default function* root() {

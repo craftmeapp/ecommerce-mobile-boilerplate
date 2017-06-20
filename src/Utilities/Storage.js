@@ -34,4 +34,8 @@ export default class Storage {
   substorage(prefix) {
     return new Storage(this._prefix ? `${this._prefix}${prefix}` : prefix)
   }
+
+  static create() {
+    return new Storage()
+  }
 }

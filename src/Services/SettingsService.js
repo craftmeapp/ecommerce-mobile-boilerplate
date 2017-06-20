@@ -1,20 +1,23 @@
 /* @flow */
 
-export default ({storage, serverAPI}) => {
-  const infoStorage = storage.substorage('Info')
+export default class SettingsService {
+  constructor({storage, serverAPI}) {
+    this._storage = storage
+    this._infoStorage = this._storage.substorage('Info')
 
-  const update = async () => {
-    const info = await serverAPI.getSettingsInfo()
-    await infoStorage.setFromObject(info)
+    this._serverAPI = serverAPI
   }
 
-  const getUpdatedAt = async () => {
-    return await infoStorage.get('updatedAt')
+  async update() {
+    const info = await this._serverAPI.getSettingsInfo()
+    await this._infoStorage.setFromObject(info)
   }
 
-  return {
-    update,
-    
-    getUpdatedAt,
+  async getUpdatedAt() {
+    return await this._infoStorage.get('updatedAt')
+  }
+
+  static create({storage, serverAPI}) {
+    return new SettingsService({storage, serverAPI})
   }
 }
