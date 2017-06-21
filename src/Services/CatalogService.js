@@ -13,10 +13,10 @@ export default class CatalogService {
 
   async update() {
     const catalogUpdatedAt = await this._storage.get(UPDATED_AT_KEY)
-    const settignsUpdatedAt = await this._settingsService.getUpdatedAt()
+    const settingsUpdatedAt = this._settingsService.getAppSettings().updatedAt
 
-    if (catalogUpdatedAt !== settignsUpdatedAt) {
-      await this._storage.set(UPDATED_AT_KEY, settignsUpdatedAt)
+    if (catalogUpdatedAt !== settingsUpdatedAt) {
+      await this._storage.set(UPDATED_AT_KEY, settingsUpdatedAt)
     }
   }
 

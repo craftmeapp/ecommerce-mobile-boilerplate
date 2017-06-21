@@ -14,7 +14,7 @@ export default class ServerAPI {
     })
   }
 
-  getSettingsInfo() {
+  getAppSettings() {
     return this._api.get('get_settings.php')
     .then(res => {
       const data = res.data[0]

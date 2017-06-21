@@ -1,12 +1,8 @@
 /* @flow */
 
-const initialState = {};
-
-function identity(state = initialState, action = {}) {
-  return state;
-}
+import settings from './SettingsReducers'
 
 
-export {
-  identity,
+export default {
+  settings,
 };

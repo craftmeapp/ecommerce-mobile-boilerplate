@@ -6,6 +6,11 @@ import SettingsActions from '../Actions/SettingsActions'
 
 
 export function* startup(settingsService, catalogService, action) {
-  yield call([settingsService, settingsService.update])
+  const appSettings = yield call([settingsService, settingsService.updateAppSettings])
+  if (!appSettings && !appSettings.isActual) {
+    // TODO: add inactual or null application settings handling
+    throw Error("Error while updating application settings!")
+  }
+  yield put(SettingsActions.updateAppSettings(appSettings))
   yield call([catalogService, catalogService.update])
 }
