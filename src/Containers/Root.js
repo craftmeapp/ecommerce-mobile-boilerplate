@@ -4,7 +4,7 @@ import React, { Component } from 'react'
 import { connect } from 'react-redux'
 
 import { StatusBar, View } from '../Components/Base'
-import Navigator from '../Navigation/RootNavigation'
+import { NavigatorWithState } from '../Navigation'
 
 
 export class Root extends Component {
@@ -16,7 +16,7 @@ export class Root extends Component {
     return (
       <View>
         <StatusBar/>
-        <Navigator />
+        <NavigatorWithState/>
       </View>
     )
   }
