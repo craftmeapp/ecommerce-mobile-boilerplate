@@ -130,6 +130,8 @@
 
     "import/prefer-default-export": [0],
     "import/no-dynamic-require": [2],
+    "import/extensions": [2, "never"],
+    "import/no-unresolved": [0],
 
     "comma-dangle": [2, {
       "arrays": "always-multiline",
