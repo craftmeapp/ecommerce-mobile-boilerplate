@@ -14,5 +14,5 @@ export function* startup(settingsService, catalogService, action) {
   }
   yield put(SettingsActions.updateAppSettings(appSettings))
   yield call([catalogService, catalogService.update])
-  yield put(NavigationActions.navigate('MainScreen'))
+  yield put(NavigationActions.navigate('/category'))
 }
