@@ -19,7 +19,7 @@ const LogoImage = Image.extend`
 `
 
 
-export class PreloadScreen extends Component {
+class PreloadScreen extends Component {
   render() {
     return (
       <MainView>
