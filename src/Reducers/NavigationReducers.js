@@ -1,6 +1,5 @@
 // @flow
 
-import { NavigationActions } from 'react-navigation';
 import { createReducer } from 'reduxsauce'
 
 import { NavigationActionTypes } from '../Actions/NavigationActions'
