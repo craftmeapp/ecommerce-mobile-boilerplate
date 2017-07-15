@@ -1,17 +1,17 @@
 // @flow
 
-import { createReducer } from 'reduxsauce'
+import { createReducer } from 'reduxsauce';
 
-import { NavigationActionTypes } from '../Actions/NavigationActions'
+import { NavigationActionTypes } from '../Actions/NavigationActions';
 
 const INITIAL_STATE = {
   routeName: '/',
-}
+};
 
-const navigate = (state, {routeName}) => ({ routeName })
+const navigate = (state, { routeName }) => ({ routeName });
 
 export const reducer = createReducer(INITIAL_STATE, {
   [NavigationActionTypes.NAVIGATE]: navigate,
-})
+});
 
-export default reducer
+export default reducer;

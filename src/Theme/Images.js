@@ -1,10 +1,11 @@
 /* @flow */
 
+import centerLogo from '../../res/images/Preload_CenterLogo.png';
+
 const images = {
   preload: {
-    centerLogo: require('../../res/images/Preload_CenterLogo.png'),
+    centerLogo,
   },
-}
-
+};
 
 export default images;

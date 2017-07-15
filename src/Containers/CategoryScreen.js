@@ -1,20 +1,23 @@
-import React, { Component } from 'react'
-import {
-  Text,
-  View,
-} from 'react-native'
+import React, { Component } from 'react';
+import CategoryList from '../Components/CategoryList';
+import CategoryItem from '../Components/CategoryItem';
 
-import CategoryList from '../Components/CategoryList'
+const data = [
+  {
+    title: 'Row 1',
+    id: 1,
+  },
+  {
+    title: 'Row 2',
+    id: 2,
+  },
+];
 
+const MainScreen = () => (
+  <CategoryList
+    data={data}
+    renderItem={CategoryItem}
+  />
+);
 
-export default class MainScreen extends Component {
-  static navigationOptions = { title: 'Main' }
-
-  render() {
-    return (
-      <CategoryList
-        data={['row 1', 'row 2']}
-        renderItem={({item}) => <Text>{item}</Text>}/>
-    )
-  }
-}
+export default MainScreen;
