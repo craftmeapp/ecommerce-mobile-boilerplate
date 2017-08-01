@@ -1,6 +1,9 @@
+/* @flow */
+
 import React, { Component } from 'react';
 import CategoryList from '../Components/CategoryList';
 import CategoryItem from '../Components/CategoryItem';
+
 
 const data = [
   {

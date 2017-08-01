@@ -1,4 +1,4 @@
-/* @flow */
+// @flow
 
 import styled from 'styled-components/native';
 
@@ -12,3 +12,5 @@ export const Text = styled.Text``;
 export const View = styled.View`
   flex: 1
 `;
+
+export const ActivityIndicator = styled.ActivityIndicator``;

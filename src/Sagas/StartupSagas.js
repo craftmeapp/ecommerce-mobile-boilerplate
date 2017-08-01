@@ -7,6 +7,8 @@ import SettingsActions from '../Actions/SettingsActions';
 
 
 export function* startup(settingsService, catalogService) {
+  yield put(SettingsActions.startUpdating());
+
   const appSettings = yield call([
     settingsService,
     settingsService.updateAppSettings,
@@ -18,6 +20,10 @@ export function* startup(settingsService, catalogService) {
   }
 
   yield put(SettingsActions.updateAppSettings(appSettings));
+
   yield call([catalogService, catalogService.update]);
+
+  yield put(SettingsActions.finishUpdating());
+
   yield put(NavigationActions.navigate('MainScreen'));
 }
