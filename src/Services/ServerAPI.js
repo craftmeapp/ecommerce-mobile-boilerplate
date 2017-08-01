@@ -15,8 +15,8 @@ export default class ServerAPI {
       request.params.login = projectID;
     });
 
-    this._api.addResponseTransform(responce => {
-      responce.data = JSON.parse(escapeChar(responce.data));
+    this._api.addResponseTransform(response => {
+      response.data = JSON.parse(escapeChar(response.data));
     });
   }
 

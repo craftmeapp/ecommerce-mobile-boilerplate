@@ -19,5 +19,5 @@ export function* startup(settingsService, catalogService) {
 
   yield put(SettingsActions.updateAppSettings(appSettings));
   yield call([catalogService, catalogService.update]);
-  yield put(NavigationActions.navigate('/category'));
+  yield put(NavigationActions.navigate('MainScreen'));
 }

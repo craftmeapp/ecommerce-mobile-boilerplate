@@ -1,49 +1,28 @@
 /* @flow */
 
 import React, { Component } from 'react';
-import { NativeRouter, Route, Redirect } from 'react-router-native';
 import { connect } from 'react-redux';
-import { StatusBar, View } from '../Components/Base';
-import PreloadScreen from './PreloadScreen';
-import CategoryScreen from './CategoryScreen';
 
-export class Root extends Component {
+import { StatusBar, View } from '../Components/Base';
+import { NavigatorWithState } from '../Navigation';
+
+
+export class _Root extends Component {
   constructor(props) {
     super(props);
-
-    this.state = {
-      redirectToRefferer: false,
-    };
-  }
-
-  componentWillReceiveProps(nextProps) {
-    this.setState({
-      redirectToRefferer: this.props.routeName !== nextProps.routeName,
-    });
   }
 
   render() {
-    const redirect = this.state.redirectToRefferer
-      ? <Redirect to={{ pathname: this.props.routeName }} />
-      : null;
-
     return (
-      <NativeRouter>
-        <View>
-          <StatusBar />
-          <Route exact path="/" component={PreloadScreen} />
-          <Route path="/category" component={CategoryScreen} />
-          {redirect}
-        </View>
-      </NativeRouter>
+      <View>
+        <StatusBar />
+        <NavigatorWithState />
+      </View>
     );
   }
 }
 
-Root.displayName = 'Root';
+const mapDispathToProps = dispatch => ({});
 
-const mapStateToProps = ({ navigation }) => ({
-  routeName: navigation.routeName,
-});
 
-export default connect(mapStateToProps)(Root);
+export default connect(null, mapDispathToProps)(_Root);

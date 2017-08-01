@@ -1,9 +1,8 @@
 {
-    "compilerOptions": {
-        "allowJs": true,
-        "allowSyntheticDefaultImports": true
-    },
+  "compilerOptions": {
+    "allowSyntheticDefaultImports": true
+  },
     "exclude": [
-        "node_modules"
-    ]
+      "node_modules"
+  ]
 }
