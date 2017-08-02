@@ -4,8 +4,6 @@ import { createActions } from 'reduxsauce';
 
 
 const { Types, Creators } = createActions({
-  startUpdating: null,
-  finishUpdating: null,
   updateAppSettings: ['appSettings'],
 });
 

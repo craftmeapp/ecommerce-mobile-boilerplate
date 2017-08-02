@@ -1,10 +1,10 @@
 /* @flow */
 
 import { takeLatest } from 'redux-saga/effects';
-import { StartupActionTypes } from '../Actions/StartupActions';
+import { ApplicationActionTypes } from '../Actions/ApplicationActions';
 import { CatalogService, ServerAPI, SettingsService } from '../Services';
 import Storage from '../Utilities/Storage';
-import { startup } from './StartupSagas';
+import { startup } from './ApplicationSagas';
 
 const globalStorage = Storage.create(),
   serverAPI = ServerAPI.create('dmalakhov');
@@ -25,7 +25,7 @@ const catalogService = CatalogService.create({
 export default function* root() {
   yield [
     takeLatest(
-      StartupActionTypes.STARTUP,
+      ApplicationActionTypes.STARTUP,
       startup,
       settingsService,
       catalogService

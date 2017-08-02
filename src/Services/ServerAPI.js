@@ -1,7 +1,7 @@
 /* @flow */
 
 import { create as createAPI } from 'apisauce';
-import { escapeChar } from '../Utilities/misc';
+import { escapeChar } from '../Utilities/Misc';
 
 
 export default class ServerAPI {
@@ -16,13 +16,19 @@ export default class ServerAPI {
     });
 
     this._api.addResponseTransform(response => {
-      response.data = JSON.parse(escapeChar(response.data));
+      try {
+        response.data = JSON.parse(escapeChar(response.data));
+      }
+      catch(err) {}
     });
   }
 
   getAppSettings() {
     return this._api.get('get_settings.php')
     .then(res => {
+      if (!res.ok) {
+        return null;
+      }
       const data = res.data[0];
 
       return {

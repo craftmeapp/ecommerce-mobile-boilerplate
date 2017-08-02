@@ -11,15 +11,9 @@ export const INITIAL_STATE = Immutable({
   updating: false,
 });
 
-
-const startUpdating = (state) => state.merge({ updating: true });
-const finishUpdating = (state) => state.merge({ updating: false });
-
 const updateAppSettings = (state, { appSettings }) => state.merge({ appSettings });
 
 export const reducer = createReducer(INITIAL_STATE, {
-  [SettingsActionTypes.START_UPDATING]: startUpdating,
-  [SettingsActionTypes.FINISH_UPDATING]: finishUpdating,
   [SettingsActionTypes.UPDATE_APP_SETTINGS]: updateAppSettings,
 });
 

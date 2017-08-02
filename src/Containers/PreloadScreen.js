@@ -2,7 +2,8 @@
 
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
-import StartupActions from '../Actions/StartupActions';
+
+import ApplicationActions from '../Actions/ApplicationActions';
 import { ActivityIndicator, Image, View } from '../Components/Base';
 import { Images } from '../Theme';
 
@@ -25,7 +26,7 @@ class PreloadScreen extends Component {
   }
 
   _renderUpdateActivityIndicator() {
-    if (this.props.updating) {
+    if (this.props.isUpdating) {
       return (
         <UpdateActivityIndicator visible="false"/>
       );
@@ -50,11 +51,11 @@ class PreloadScreen extends Component {
 }
 
 const mapStateToProps = (state) => ({
-  updating: state.settings.updating,
+  isUpdating: state.application.updating,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startup: () => dispatch(StartupActions.startup()),
+  startup: () => dispatch(ApplicationActions.startup()),
 });
 
 
