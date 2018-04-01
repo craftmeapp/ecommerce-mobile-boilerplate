@@ -2,6 +2,10 @@
 
 import React from 'react';
 import { addNavigationHelpers, StackNavigator } from 'react-navigation';
+import {
+  createReactNavigationReduxMiddleware,
+  createReduxBoundAddListener,
+} from 'react-navigation-redux-helpers';
 import { connect } from 'react-redux';
 
 import MainScreen from '../Containers/MainScreen';
@@ -16,8 +20,14 @@ const Navigator = StackNavigator({
   initialRouteName: 'PreloadScreen',
 });
 
+export const middleware = createReactNavigationReduxMiddleware(
+  "main",
+  state => state.navigation,
+);
+const addListener = createReduxBoundAddListener("main");
+
 const _NavigatorWithState = ({ dispatch, navigation }) => (
-  <Navigator navigation={addNavigationHelpers({ dispatch, state: navigation })} />
+  <Navigator navigation={addNavigationHelpers({ dispatch, state: navigation, addListener })} />
 );
 
 const mapStateToProps = state => ({

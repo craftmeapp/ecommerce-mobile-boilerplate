@@ -1,26 +1,28 @@
 /* @flow */
 
 import { applyMiddleware, combineReducers, createStore, compose } from 'redux';
-import createSagaMiddleware from 'redux-saga';
+import thunk from 'redux-thunk';
 
-import reducers from './Reducers';
-import rootSaga from './Sagas';
+import application from './Reducer';
+import navigation from './Modules/Navigation/Reducer';
+import settings from './Modules/Settings/Reducer';
+import { middleware as navigationMiddleware } from './Navigation/Navigator';
 
 
 export default () => {
-  const rootReducer = combineReducers(reducers);
+  const rootReducer = combineReducers({
+    application,
+    navigation,
+    settings,
+  });
 
-  const middleware = [];
-  const enhancers = [];
-
-  const sagaMiddleware = createSagaMiddleware();
-  middleware.push(sagaMiddleware);
-
-  enhancers.push(applyMiddleware(...middleware));
-
-  const store = createStore(rootReducer, compose(...enhancers));
-
-  sagaMiddleware.run(rootSaga);
-
-  return store;
+  return createStore(
+    rootReducer,
+    compose(
+      applyMiddleware(
+        thunk,
+        navigationMiddleware,
+      ),
+    ),
+  );
 };

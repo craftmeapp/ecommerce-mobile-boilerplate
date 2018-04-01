@@ -3,7 +3,7 @@
 import React, { Component } from 'react';
 import { connect } from 'react-redux';
 
-import ApplicationActions from '../Actions/ApplicationActions';
+import { startup } from '../Actions';
 import { ActivityIndicator, Image, View } from '../Components/Base';
 import { Images } from '../Theme';
 
@@ -55,7 +55,7 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  startup: () => dispatch(ApplicationActions.startup()),
+  startup: () => dispatch(startup()),
 });
 
 
