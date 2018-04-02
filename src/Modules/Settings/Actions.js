@@ -3,4 +3,4 @@
 import { actions } from './Reducer';
 
 
-export default actions;
+export const updateAppSettings = actions.updateAppSettings;

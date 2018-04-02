@@ -1,10 +1,23 @@
 /* @flow */
 
-import _CatalogService from './CatalogService';
-import _ServerAPI from './ServerAPI';
-import _SettingsService from './SettingsService';
+import CatalogService from './CatalogService';
+import ServerAPI from './ServerAPI';
+import SettingsService from './SettingsService';
+import Storage from '../Utilities/Storage';
 
 
-export const CatalogService = _CatalogService;
-export const ServerAPI = _ServerAPI;
-export const SettingsService = _SettingsService;
+const globalStorage = Storage.create();
+const serverAPI = ServerAPI.create('dmalakhov');
+
+const settingsStorage = globalStorage.substorage('Settings');
+export const settingsService = SettingsService.create({
+  storage: settingsStorage,
+  serverAPI,
+});
+
+const catalogStorage = globalStorage.substorage('Catalog');
+export const catalogService = CatalogService.create({
+  storage: catalogStorage,
+  serverAPI,
+  settingsService,
+});

@@ -5,16 +5,16 @@ import Immutable from 'seamless-immutable';
 
 
 const initialState = Immutable({
-  appSettings: null,
+  app: null,
 });
 
 export const actions = createActions({ SETTINGS: {
-  UPDATE: (appSettings) => appSettings,
+  UPDATE_APP_SETTINGS: app => app,
 }}).settings;
 
 const reducer = handleActions({
-  [actions.update](state, {payload: appSettings}) {
-    return state.merge({ appSettings });
+  [actions.updateAppSettings](state, {payload: app}) {
+    return state.merge({ app });
   },
 }, initialState);
 
