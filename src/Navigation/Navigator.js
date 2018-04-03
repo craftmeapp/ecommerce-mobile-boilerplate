@@ -21,13 +21,13 @@ const Navigator = StackNavigator({
 });
 
 export const middleware = createReactNavigationReduxMiddleware(
-  "main",
+  'main',
   state => state.navigation,
 );
-const addListener = createReduxBoundAddListener("main");
+const addListener = createReduxBoundAddListener('main');
 
 const _NavigatorWithState = ({ dispatch, navigation }) => (
-  <Navigator navigation={addNavigationHelpers({ dispatch, state: navigation, addListener })} />
+  <Navigator navigation={addNavigationHelpers({ dispatch, state: navigation, addListener })}/>
 );
 
 const mapStateToProps = state => ({

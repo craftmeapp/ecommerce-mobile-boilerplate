@@ -19,24 +19,24 @@ export default class ServerAPI {
       try {
         response.data = JSON.parse(escapeChar(response.data));
       }
-      catch(err) {}
+      catch (err) {}
     });
   }
 
   getAppSettings() {
     return this._api.get('get_settings.php')
-    .then(res => {
-      if (!res.ok) {
-        return null;
-      }
-      const data = res.data[0];
+      .then(res => {
+        if (!res.ok) {
+          return null;
+        }
+        const data = res.data[0];
 
-      return {
-        version: data.version,
-        updatedAt: data.last_sign_in_at,
-        smartAssistantEnabled: data.smart_assistant,
-      };
-    });
+        return {
+          version: data.version,
+          updatedAt: data.last_sign_in_at,
+          smartAssistantEnabled: data.smart_assistant,
+        };
+      });
   }
 
   static create(projectID) {

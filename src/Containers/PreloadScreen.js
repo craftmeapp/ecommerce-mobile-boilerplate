@@ -50,11 +50,11 @@ class PreloadScreen extends Component {
   }
 }
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   isUpdating: state.application.updating,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   startup: () => dispatch(startup()),
 });
 

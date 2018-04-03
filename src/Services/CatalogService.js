@@ -15,8 +15,9 @@ export default class CatalogService {
     const catalogUpdatedAt = await this._storage.get(UPDATED_AT_KEY);
     const settingsUpdatedAt = this._settingsService.getAppSettings().updatedAt;
 
-    if (catalogUpdatedAt !== settingsUpdatedAt)
+    if (catalogUpdatedAt !== settingsUpdatedAt) {
       await this._storage.set(UPDATED_AT_KEY, settingsUpdatedAt);
+    }
   }
 
   static create({ storage, serverAPI, settingsService }) {

@@ -18,11 +18,9 @@ export default () => {
 
   return createStore(
     rootReducer,
-    compose(
-      applyMiddleware(
-        thunk,
-        navigationMiddleware,
-      ),
-    ),
+    compose(applyMiddleware(
+      thunk,
+      navigationMiddleware,
+    )),
   );
 };

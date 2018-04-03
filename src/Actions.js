@@ -3,19 +3,18 @@
 import { actions } from './Reducer';
 import {
   catalogService,
-  settingsService
+  settingsService,
 } from './Services';
 import { navigate } from './Modules/Navigation/Actions';
 import { updateAppSettings } from './Modules/Settings/Actions';
 
 
-export const startup = () => async (dispatch) => {
+export const startup = () => async dispatch => {
   dispatch(actions.update.started());
 
   const appSettings = await settingsService.updateAppSettings();
   if (!appSettings || !appSettings.isActual) {
     // TODO: add inactual or null application settings handling
-    console.log(111)
     throw Error('Error while updating application settings!');
   }
   dispatch(updateAppSettings(appSettings));

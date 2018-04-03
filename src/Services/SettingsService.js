@@ -21,7 +21,8 @@ export default class SettingsService {
 
       await this._storage.set(APP_SETTINGS_KEY, JSON.stringify(appSettings));
       return this._appSettings;
-    } catch (err) {
+    }
+    catch (err) {
       const appSettings = JSON.parse(await this._storage.get(APP_SETTINGS_KEY));
       if (appSettings !== null) {
         this._appSettings = Immutable.merge(appSettings, [{ isActual: true }]);

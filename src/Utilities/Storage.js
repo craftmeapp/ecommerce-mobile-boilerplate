@@ -15,7 +15,8 @@ export default class Storage {
   async get(key) {
     try {
       return await AsyncStorage.getItem(this._key(key));
-    } catch (err) {
+    }
+    catch (err) {
       return null;
     }
   }
@@ -25,8 +26,9 @@ export default class Storage {
   }
 
   async setFromObject(obj) {
-    for (const key in obj)
+    for (const key in obj) {
       await this.set(key, obj[key]);
+    }
   }
 
   substorage(prefix) {

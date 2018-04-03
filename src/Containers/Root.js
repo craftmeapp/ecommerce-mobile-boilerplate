@@ -15,8 +15,8 @@ export class _Root extends Component {
   render() {
     return (
       <View>
-        <StatusBar />
-        <NavigatorWithState />
+        <StatusBar/>
+        <NavigatorWithState/>
       </View>
     );
   }

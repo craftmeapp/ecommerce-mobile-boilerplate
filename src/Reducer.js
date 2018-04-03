@@ -8,12 +8,14 @@ const initialState = Immutable({
   updating: false,
 });
 
-export const actions = createActions({APPLICATION: {
-  UPDATE: {
-    STARTED: null,
-    FINISHED: null,
-  }
-}}).application;
+export const actions = createActions({
+  APPLICATION: {
+    UPDATE: {
+      STARTED: null,
+      FINISHED: null,
+    },
+  },
+}).application;
 
 const reducer = handleActions({
   [actions.update.started](state) {
