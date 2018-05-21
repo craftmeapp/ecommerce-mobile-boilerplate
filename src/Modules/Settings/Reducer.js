@@ -1,6 +1,6 @@
 // @flow
 
-import { createActions, handleActions } from 'redux-actions';
+import {createActions, handleActions} from 'redux-actions';
 import Immutable from 'seamless-immutable';
 
 
@@ -15,8 +15,8 @@ export const actions = createActions({
 }).settings;
 
 const reducer = handleActions({
-  [actions.updateAppSettings](state, { payload: app }) {
-    return state.merge({ app });
+  [actions.updateAppSettings](state, {payload: app}) {
+    return state.merge({app});
   },
 }, initialState);
 

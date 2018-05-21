@@ -1,13 +1,14 @@
 // @flow
 
 import React from 'react';
-import { Text } from 'react-native';
+import {Text} from 'react-native';
 
 
-const CategoryItem = ({ item: { title, id } }) => (
-  <Text key={id}>
-    {title}
+const CategoryItem = item => (
+  <Text key={item.id}>
+    {item.title}
   </Text>
 );
+
 
 export default CategoryItem;

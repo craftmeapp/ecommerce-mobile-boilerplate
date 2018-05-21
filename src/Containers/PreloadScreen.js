@@ -1,11 +1,12 @@
 /* @flow */
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React, {Component} from 'react';
+import {connect} from 'react-redux';
+import pt from 'prop-types';
 
-import { startup } from '../Actions';
-import { ActivityIndicator, Image, View } from '../Components/Base';
-import { Images } from '../Theme';
+import {startup} from '../Actions';
+import {ActivityIndicator, Image, View} from '../Components/Base';
+import {Images} from '../Theme';
 
 
 const MainView = View.extend``;
@@ -28,7 +29,7 @@ class PreloadScreen extends Component {
   _renderUpdateActivityIndicator() {
     if (this.props.isUpdating) {
       return (
-        <UpdateActivityIndicator visible="false"/>
+        <UpdateActivityIndicator visible="false" />
       );
     }
     return null;
@@ -49,6 +50,10 @@ class PreloadScreen extends Component {
     );
   }
 }
+PreloadScreen.propTypes = {
+  isUpdating: pt.bool.isRequired,
+  startup: pt.func.isRequired,
+};
 
 const mapStateToProps = state => ({
   isUpdating: state.application.updating,

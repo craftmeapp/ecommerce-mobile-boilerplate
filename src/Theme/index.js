@@ -3,4 +3,4 @@
 import Images from './Images';
 
 
-export { Images };
+export {Images};

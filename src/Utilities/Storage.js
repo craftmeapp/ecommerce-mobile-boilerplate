@@ -1,6 +1,6 @@
 /* @flow */
 
-import { AsyncStorage } from 'react-native';
+import {AsyncStorage} from 'react-native';
 
 
 export default class Storage {
@@ -22,13 +22,11 @@ export default class Storage {
   }
 
   async set(key, value) {
-    return await AsyncStorage.setItem(this._key(key), value.toString());
+    return AsyncStorage.setItem(this._key(key), value.toString());
   }
 
   async setFromObject(obj) {
-    for (const key in obj) {
-      await this.set(key, obj[key]);
-    }
+    return Promise.all(Object.entries(obj).map(([key, value]) => this.set(key, value)));
   }
 
   substorage(prefix) {

@@ -1,6 +1,6 @@
 // @flow
 
-import { actions } from './Reducer';
+import {actions} from './Reducer';
 
 
-export const updateAppSettings = actions.updateAppSettings;
+export const {updateAppSettings} = actions;

@@ -4,7 +4,7 @@ const UPDATED_AT_KEY = 'updatedAt';
 
 
 export default class CatalogService {
-  constructor({ storage, serverAPI, settingsService }) {
+  constructor({storage, serverAPI, settingsService}) {
     this._storage = storage;
 
     this._serverAPI = serverAPI;
@@ -20,7 +20,7 @@ export default class CatalogService {
     }
   }
 
-  static create({ storage, serverAPI, settingsService }) {
-    return new CatalogService({ storage, serverAPI, settingsService });
+  static create({storage, serverAPI, settingsService}) {
+    return new CatalogService({storage, serverAPI, settingsService});
   }
 }

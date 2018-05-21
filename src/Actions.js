@@ -1,15 +1,15 @@
 // @flow
 
-import { actions } from './Reducer';
+import {actions} from './Reducer';
 import {
   catalogService,
   settingsService,
 } from './Services';
-import { navigate } from './Modules/Navigation/Actions';
-import { updateAppSettings } from './Modules/Settings/Actions';
+import {navigate} from './Modules/Navigation/Actions';
+import {updateAppSettings} from './Modules/Settings/Actions';
 
 
-export const startup = () => async dispatch => {
+export const startup = () => async (dispatch) => {
   dispatch(actions.update.started());
 
   const appSettings = await settingsService.updateAppSettings();

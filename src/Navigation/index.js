@@ -1,6 +1,6 @@
 // @flow
 
-import _Navigator, { NavigatorWithState as _NavigatorWithState } from './Navigator';
+import _Navigator, {NavigatorWithState as _NavigatorWithState} from './Navigator';
 
 
 export const Navigator = _Navigator;

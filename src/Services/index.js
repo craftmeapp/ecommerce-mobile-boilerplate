@@ -1,9 +1,10 @@
 /* @flow */
 
+import Storage from '../Utilities/Storage';
+
 import CatalogService from './CatalogService';
 import ServerAPI from './ServerAPI';
 import SettingsService from './SettingsService';
-import Storage from '../Utilities/Storage';
 
 
 const globalStorage = Storage.create();

@@ -1,7 +1,6 @@
 /* @flow */
 
-import { create as createAPI } from 'apisauce';
-import { escapeChar } from '../Utilities/Misc';
+import {create as createAPI} from 'apisauce';
 
 
 export default class ServerAPI {
@@ -11,32 +10,25 @@ export default class ServerAPI {
       timeout: 10000,
     });
 
-    this._api.addRequestTransform(request => {
+    this._api.addRequestTransform((request) => {
       request.params.login = projectID;
-    });
-
-    this._api.addResponseTransform(response => {
-      try {
-        response.data = JSON.parse(escapeChar(response.data));
-      }
-      catch (err) {}
     });
   }
 
-  getAppSettings() {
-    return this._api.get('get_settings.php')
-      .then(res => {
-        if (!res.ok) {
-          return null;
-        }
-        const data = res.data[0];
+  async getAppSettings() {
+    const res = await this._api.get('get_settings.php');
+    if (!res.ok) {
+      return null;
+    }
+    const data = res.data[0];
 
-        return {
-          version: data.version,
-          updatedAt: data.last_sign_in_at,
-          smartAssistantEnabled: data.smart_assistant,
-        };
-      });
+    return {
+      version: data.version,
+      updatedAt: data.last_sign_in_at,
+      features: {
+        smartAssistant: data.smart_assistant,
+      },
+    };
   }
 
   static create(projectID) {

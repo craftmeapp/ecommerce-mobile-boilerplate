@@ -1,6 +1,6 @@
 // @flow
 
-import { createActions } from 'redux-actions';
+import {createActions} from 'redux-actions';
 
 
 const actions = createActions({
@@ -9,6 +9,6 @@ const actions = createActions({
   },
 }).navigation;
 
-export const navigate = actions.navigate;
+export const {navigate} = actions;
 
 export default actions;

@@ -1,28 +1,17 @@
 // @flow
 
-import React, { Component } from 'react';
-import { connect } from 'react-redux';
+import React from 'react';
 
-import { StatusBar, View } from '../Components/Base';
-import { NavigatorWithState } from '../Navigation';
-
-
-export class _Root extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  render() {
-    return (
-      <View>
-        <StatusBar/>
-        <NavigatorWithState/>
-      </View>
-    );
-  }
-}
-
-const mapDispathToProps = dispatch => ({});
+import {NavigatorWithState} from '../Navigation';
+import {StatusBar, View} from '../Components/Base';
 
 
-export default connect(null, mapDispathToProps)(_Root);
+const Root = () => (
+  <View>
+    <StatusBar />
+    <NavigatorWithState />
+  </View>
+);
+
+
+export default Root;
