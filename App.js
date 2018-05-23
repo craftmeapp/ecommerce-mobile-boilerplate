@@ -3,16 +3,24 @@
 import React from 'react';
 import {Provider} from 'react-redux';
 
+import {Navigator} from './src/Navigation';
+import {StatusBar, View} from './src/Components/Base';
 import createStore from './src/Store';
-import Root from './src/Containers/Root';
 
 
 const store = createStore();
 
 const App = () => (
   <Provider store={store}>
-    <Root />
+    <View>
+      <StatusBar />
+      <Navigator />
+    </View>
   </Provider>
 );
+
+
+console.ignoredYellowBox = ['Warning: componentWill'];
+
 
 export default App;

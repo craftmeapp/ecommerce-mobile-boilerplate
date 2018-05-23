@@ -1,45 +1,38 @@
 // @flow
 
-import pt from 'prop-types';
 import React from 'react';
-import {addNavigationHelpers, StackNavigator} from 'react-navigation';
-import {
-  createReactNavigationReduxMiddleware,
-  createReduxBoundAddListener,
-} from 'react-navigation-redux-helpers';
-import {connect} from 'react-redux';
+import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 
-import MainScreen from '../Containers/MainScreen';
-import PreloadScreen from '../Containers/PreloadScreen';
+import Images from '../Theme/Images';
+import MainScreen from '../Screens/MainScreen';
+import PreloadScreen from '../Screens/PreloadScreen';
 
 
-const Navigator = StackNavigator({
-  PreloadScreen: {screen: PreloadScreen},
-  MainScreen: {screen: MainScreen},
+const MainNavigator = createBottomTabNavigator({
+  Menu: MainScreen,
+  Basket: MainScreen,
+}, {
+  navigationOptions: ({navigation}) => ({
+    tabBarIcon: ({focused, tintColor}) => {
+      const {routeName} = navigation.state;
+      const IconComponent = Images.Main.TabBar[`${routeName}Icon`];
+      return <IconComponent size={25} color={tintColor} />;
+    },
+    tabBarOptions: {
+      activeTintColor: 'red',
+      inactiveTintColor: 'gray',
+    },
+  }),
+});
+
+const PreloadNavigator = createStackNavigator({
+  Preload: {screen: PreloadScreen},
+  Main: {screen: MainNavigator},
 }, {
   headerMode: 'none',
-  initialRouteName: 'PreloadScreen',
-});
-
-export const middleware = createReactNavigationReduxMiddleware(
-  'main',
-  state => state.navigation,
-);
-const addListener = createReduxBoundAddListener('main');
-
-const _NavigatorWithState = ({dispatch, navigation}) => (
-  <Navigator navigation={addNavigationHelpers({dispatch, state: navigation, addListener})} />
-);
-_NavigatorWithState.propTypes = {
-  dispatch: pt.func.isRequired,
-  navigation: pt.object.isRequired,
-};
-
-const mapStateToProps = state => ({
-  navigation: state.navigation,
+  initialRouteName: 'Preload',
+  mode: 'modal',
 });
 
 
-export const NavigatorWithState = connect(mapStateToProps)(_NavigatorWithState);
-
-export default Navigator;
+export default PreloadNavigator;

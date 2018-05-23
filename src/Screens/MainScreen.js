@@ -1,5 +1,4 @@
-/* @flow */
-
+// @flow
 
 import React from 'react';
 
@@ -18,6 +17,7 @@ const data = [{
 const MainScreen = () => (
   <CategoryList
     data={data}
+    keyExtractor={item => item.id.toString()}
     renderItem={CategoryItem}
   />
 );

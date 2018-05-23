@@ -4,7 +4,7 @@ import React from 'react';
 import {Text} from 'react-native';
 
 
-const CategoryItem = item => (
+const CategoryItem = ({item}) => (
   <Text key={item.id}>
     {item.title}
   </Text>

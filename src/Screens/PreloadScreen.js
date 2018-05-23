@@ -5,7 +5,7 @@ import {connect} from 'react-redux';
 import pt from 'prop-types';
 
 import {startup} from '../Actions';
-import {ActivityIndicator, Image, View} from '../Components/Base';
+import {ActivityIndicator, View} from '../Components/Base';
 import {Images} from '../Theme';
 
 
@@ -13,17 +13,19 @@ const MainView = View.extend``;
 const LogoView = View.extend`
   margin: 50px
 `;
-const LogoImage = Image.extend`
+const LogoImage = Images.Preload.CenterLogo.extend`
   height: 100%
   width: 100%
+  resizeMode: contain
 `;
 const UpdateActivityIndicator = ActivityIndicator.extend`
-  margin-bottom: 50px
+  marginBottom: 50px
 `;
 
 class PreloadScreen extends Component {
-  componentDidMount() {
-    this.props.startup();
+  async componentDidMount() {
+    await this.props.startup();
+    this.props.navigation.navigate('Main');
   }
 
   _renderUpdateActivityIndicator() {
@@ -39,11 +41,7 @@ class PreloadScreen extends Component {
     return (
       <MainView>
         <LogoView>
-          <LogoImage
-            source={Images.preload.centerLogo}
-            resizeMode="contain"
-            resizeMethod="resize"
-          />
+          <LogoImage />
         </LogoView>
         {this._renderUpdateActivityIndicator()}
       </MainView>

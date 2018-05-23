@@ -5,7 +5,6 @@ import {
   catalogService,
   settingsService,
 } from './Services';
-import {navigate} from './Modules/Navigation/Actions';
 import {updateAppSettings} from './Modules/Settings/Actions';
 
 
@@ -22,5 +21,4 @@ export const startup = () => async (dispatch) => {
   await catalogService.update();
 
   dispatch(actions.update.finished());
-  dispatch(navigate('MainScreen'));
 };
