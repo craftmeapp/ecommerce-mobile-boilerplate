@@ -6,14 +6,30 @@ import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
 import Images from '../Theme/Images';
 import MainScreen from '../Screens/MainScreen';
 import PreloadScreen from '../Screens/PreloadScreen';
+import {i18n} from '../Utilities/Localization';
+
+
+const MenuNavigator = createStackNavigator({
+  CategoryList: {
+    screen: MainScreen,
+    navigationOptions: {
+      title: i18n.t('main.menuTitle'),
+    },
+  },
+  ProductList: MainScreen,
+}, {
+  initialRouteName: 'CategoryList',
+  mode: 'card',
+  headerMode: 'float',
+});
 
 
 const MainNavigator = createBottomTabNavigator({
-  Menu: MainScreen,
+  Menu: MenuNavigator,
   Basket: MainScreen,
 }, {
   navigationOptions: ({navigation}) => ({
-    tabBarIcon: ({focused, tintColor}) => {
+    tabBarIcon: ({tintColor}) => {
       const {routeName} = navigation.state;
       const IconComponent = Images.Main.TabBar[`${routeName}Icon`];
       return <IconComponent size={25} color={tintColor} />;

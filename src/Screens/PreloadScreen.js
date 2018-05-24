@@ -11,15 +11,15 @@ import {Images} from '../Theme';
 
 const MainView = View.extend``;
 const LogoView = View.extend`
-  margin: 50px
+  margin: 50px;
 `;
 const LogoImage = Images.Preload.CenterLogo.extend`
-  height: 100%
-  width: 100%
-  resizeMode: contain
+  height: 100%;
+  width: 100%;
+  resizeMode: contain;
 `;
 const UpdateActivityIndicator = ActivityIndicator.extend`
-  marginBottom: 50px
+  marginBottom: 50px;
 `;
 
 class PreloadScreen extends Component {
