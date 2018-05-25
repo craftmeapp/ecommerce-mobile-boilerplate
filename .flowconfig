@@ -1,3 +1,5 @@
+; Why Flow was removed: https://github.com/react-navigation/react-navigation/pull/3350#issuecomment-360869727
+
 [ignore]
 ; We fork some components by platform
 .*/*[.]android.js
