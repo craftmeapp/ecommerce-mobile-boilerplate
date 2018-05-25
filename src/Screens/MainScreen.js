@@ -2,8 +2,13 @@
 
 import React from 'react';
 
+import {View} from '../Components/Base';
+import Header from '../Components/Header';
 import CategoryItem from '../Components/CategoryItem';
 import CategoryList from '../Components/CategoryList';
+
+
+const Container = View.extend``;
 
 
 const data = [{
@@ -15,11 +20,14 @@ const data = [{
 }];
 
 const MainScreen = () => (
-  <CategoryList
-    data={data}
-    keyExtractor={item => item.id.toString()}
-    renderItem={CategoryItem}
-  />
+  <Container>
+    <Header title="Меню" />
+    <CategoryList
+      data={data}
+      keyExtractor={item => item.id.toString()}
+      renderItem={CategoryItem}
+    />
+  </Container>
 );
 
 
