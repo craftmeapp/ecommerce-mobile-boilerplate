@@ -20,6 +20,8 @@ export default class CatalogService {
     }
   }
 
+  async getCategories() {}
+
   static create({storage, serverAPI, settingsService}) {
     return new CatalogService({storage, serverAPI, settingsService});
   }
