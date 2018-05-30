@@ -1,10 +1,5 @@
-// @flow
-
 import {actions} from './Reducer';
-import {
-  catalogService,
-  settingsService,
-} from './Services';
+import {catalogService, settingsService} from './Services';
 import {updateAppSettings} from './Modules/Settings/Actions';
 
 

@@ -1,5 +1,3 @@
-// @flow
-
 import {actions} from './Reducer';
 
 

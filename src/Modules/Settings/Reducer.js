@@ -1,5 +1,3 @@
-// @flow
-
 import {createActions, handleActions} from 'redux-actions';
 import Immutable from 'seamless-immutable';
 

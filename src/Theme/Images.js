@@ -1,4 +1,4 @@
-// @flow
+/* eslint-disable global-require */
 
 import React from 'react';
 import Icons from '@expo/vector-icons';
@@ -12,7 +12,6 @@ function image(sourceFn, defaultProps = {}) {
   return styled(component)``;
 }
 
-
 function icon(path, defaultProps = {}) {
   let [set, name] = path.split('.');
   if (!name) {
@@ -20,11 +19,10 @@ function icon(path, defaultProps = {}) {
     set = 'Entypo';
   }
   const IconComponent = Icons[set];
-  let component = props => (<IconComponent {...defaultProps} {...props} name={name} />);
+  let component = props => <IconComponent {...defaultProps} {...props} name={name} />;
   component = styled(component)``;
   return component;
 }
-
 
 const images = {
   Preload: {
@@ -37,6 +35,5 @@ const images = {
     },
   },
 };
-
 
 export default images;

@@ -7,7 +7,6 @@ function getTestableCatalogService() {
   return CatalogService.create({});
 }
 
-
 describe('CatalogService', () => {
   let catalogService = null;
 

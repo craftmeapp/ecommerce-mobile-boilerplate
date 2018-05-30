@@ -1,5 +1,5 @@
-import pt from 'prop-types';
 import React from 'react';
+import pt from 'prop-types';
 
 import {Text, View} from './Base';
 

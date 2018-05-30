@@ -1,5 +1,3 @@
-/* @flow */
-
 const UPDATED_AT_KEY = 'updatedAt';
 
 
@@ -20,7 +18,7 @@ export default class CatalogService {
     }
   }
 
-  async getCategories() {}
+  // async getCategories() {}
 
   static create({storage, serverAPI, settingsService}) {
     return new CatalogService({storage, serverAPI, settingsService});

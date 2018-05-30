@@ -1,4 +1,4 @@
-// @flow
+/* @flow */
 
 import _i18n from 'i18next';
 import Expo from 'expo';
@@ -7,8 +7,8 @@ import Expo from 'expo';
 const languageDetector = {
   type: 'languageDetector',
   async: true,
-  detect: callback => Expo.DangerZone.Localization.getCurrentLocaleAsync()
-    .then((lng) => {
+  detect: callback =>
+    Expo.DangerZone.Localization.getCurrentLocaleAsync().then((lng) => {
       callback(lng.replace('_', '-'));
     }),
   init: () => {},
@@ -17,6 +17,7 @@ const languageDetector = {
 
 export const i18n = _i18n
   .use(languageDetector)
+  .use({})
   .init({
     fallbackLng: 'ru',
     resources: {

@@ -1,7 +1,6 @@
-// @flow
-
 import React from 'react';
 import {createBottomTabNavigator, createStackNavigator} from 'react-navigation';
+import pt from 'prop-types';
 
 import Images from '../Theme/Images';
 import MainScreen from '../Screens/MainScreen';
@@ -28,17 +27,23 @@ const MainNavigator = createBottomTabNavigator({
   Menu: MenuNavigator,
   Basket: MainScreen,
 }, {
-  navigationOptions: ({navigation}) => ({
-    tabBarIcon: ({tintColor}) => {
+  navigationOptions: ({navigation}) => {
+    const MainTabBarIcon = (props) => {
       const {routeName} = navigation.state;
       const IconComponent = Images.Main.TabBar[`${routeName}Icon`];
-      return <IconComponent size={25} color={tintColor} />;
-    },
-    tabBarOptions: {
-      activeTintColor: 'red',
-      inactiveTintColor: 'gray',
-    },
-  }),
+      return <IconComponent size={25} color={props.tintColor} />;
+    };
+    MainTabBarIcon.propTypes = {
+      tintColor: pt.string.isRequired,
+    };
+    return {
+      tabBarIcon: MainTabBarIcon,
+      tabBarOptions: {
+        activeTintColor: 'red',
+        inactiveTintColor: 'gray',
+      },
+    };
+  },
 });
 
 const PreloadNavigator = createStackNavigator({

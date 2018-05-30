@@ -1,5 +1,3 @@
-/* @flow */
-
 import {applyMiddleware, combineReducers, createStore, compose} from 'redux';
 import thunk from 'redux-thunk';
 

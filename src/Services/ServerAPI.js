@@ -1,5 +1,3 @@
-/* @flow */
-
 import {create as createAPI} from 'apisauce';
 
 

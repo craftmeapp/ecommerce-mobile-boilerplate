@@ -1,5 +1,3 @@
-/* @flow */
-
 import React, {Component} from 'react';
 import {connect} from 'react-redux';
 import pt from 'prop-types';
@@ -50,6 +48,7 @@ class PreloadScreen extends Component {
 }
 PreloadScreen.propTypes = {
   isUpdating: pt.bool.isRequired,
+  navigation: pt.object.isRequired,
   startup: pt.func.isRequired,
 };
 
